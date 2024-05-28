@@ -7,8 +7,12 @@ SRC = ./src
 CFLAGS = -Wall -g -o
 ASSEMBLYFLAGS = -c
 
-$(BIN)/duplicateNumbers: $(SRC)/duplicateNumbers.c
-	$(CC) $(CFLAGS) $(BIN)/duplicateNumber $(SRC)/duplicateNumbers.c
+duplicateNumbers: $(OBJ)/duplicateNumbers.o
+	$(CC) $(CFLAGS) $(BIN)/duplicateNumber $(OBJ)/duplicateNumbers.o
 
 $(OBJ)/duplicateNumbers.o: $(SRC)/duplicateNumbers.c
-	$(CC) $(ASSEMBLYFLAGS) $(OBJ)/duplicateNumbers.o $(SRC)/duplicateNumbers.c
+	$(CC) $(ASSEMBLYFLAGS) $(SRC)/duplicateNumbers.c
+	mv *.o $(OBJ)/
+
+clean:	
+	rm $(BIN)/*
